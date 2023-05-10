@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+    <File name="infoAppender" fileName="logs/info.log">
+      <PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n"/>
+      <LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+    </File>
+    <File name="errorAppender" fileName="logs/error.log">
+      <PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n"/>
+      <LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+    </File>
+    <File name="debugAppender" fileName="logs/debug.log">
+      <PatternLayout pattern="%d{ISO8601} [%t] %-5level %logger{36} - %msg%n"/>
+      <LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+    </File>
+  </Appenders>
+  <Loggers>
+    <Logger name="com.example" level="DEBUG"/>
+    <Root level="DEBUG">
+      <AppenderRef ref="infoAppender"/>
+      <AppenderRef ref="errorAppender"/>
+      <AppenderRef ref="debugAppender"/>
+    </Root>
+  </Loggers>
+</Configuration>
